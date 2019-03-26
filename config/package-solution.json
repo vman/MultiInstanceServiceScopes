@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "multi-instance-service-scopes-client-side-solution",
+    "id": "ebd6d5d0-3efb-4548-b9b7-4f854a57c70f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/multi-instance-service-scopes.sppkg"
+  }
+}
