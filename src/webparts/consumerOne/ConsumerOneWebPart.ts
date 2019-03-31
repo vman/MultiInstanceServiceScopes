@@ -22,7 +22,7 @@ export default class ConsumerOneWebPart extends BaseClientSideWebPart<IConsumerO
         <div class="${ styles.container }">
           <div class="${ styles.row }">
             <div class="${ styles.column }">
-                <span class="counterValue ${ styles.title }">Learn more</span>
+                <span class="counterValue ${ styles.title }"></span>
             </div>
           </div>
         </div>
