@@ -4,7 +4,6 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './ConsumerOneWebPart.module.scss';
 import * as strings from 'ConsumerOneWebPartStrings';
@@ -23,19 +22,17 @@ export default class ConsumerOneWebPart extends BaseClientSideWebPart<IConsumerO
         <div class="${ styles.container }">
           <div class="${ styles.row }">
             <div class="${ styles.column }">
-              <span class="${ styles.title }">Welcome to SharePoint!</span>
-              <p class="${ styles.subTitle }">Maintain multiple service instances on the same page</p>
-                <span class="counterValue ${ styles.label }">Learn more</span>
+                <span class="counterValue ${ styles.title }">Learn more</span>
             </div>
           </div>
         </div>
       </div>`;
- 
-      // const currentWebPartServiceScope = this.context.serviceScope.startNewChild();
-      // const counterServiceInstance = currentWebPartServiceScope.createDefaultAndProvide(CounterService.serviceKey);
-      // currentWebPartServiceScope.finish();
 
-      const counterServiceInstance = this.context.serviceScope.consume(CounterService.serviceKey);
+      //const counterServiceInstance: ICounterService = this.context.serviceScope.consume(CounterService.serviceKey);
+
+      const currentWebPartServiceScope = this.context.serviceScope.startNewChild();
+      const counterServiceInstance: ICounterService = currentWebPartServiceScope.createDefaultAndProvide(CounterService.serviceKey);
+      currentWebPartServiceScope.finish();
 
       const currentCounterValue : string = `Current counter value: ${counterServiceInstance.increaseAndReturnCount()}`;
       this.domElement.getElementsByClassName("counterValue")[0].textContent = currentCounterValue;
